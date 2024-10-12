@@ -1,0 +1,36 @@
+Para que Arduino IDE pueda cargar un programa a alguna placa de desarrollo, en este caso la ESP32, necesitamos tener algunas configuraciones iniciales. 
+
+La instalación de Arduino IDE es bastante sencilla, pues sólo es un archivo de tipo zip, que contiene todos los archivos y dependencias para lanzar Arduino. simplemente lo descomprimes y vas al archivo ejecutable de arduino-ide
+
+Para crear un enlace simbólico y poder ejecutar Arduino IDE con el comando:
+
+$ arduino
+
+Debemos hacer el siguiente comando:
+
+sudo ln -s /home/gabo/Arduino\ IDE/arduino-ide_2.3.3_Linux_64bit/arduino-ide /usr/local/bin/arduino
+
+Con eso podrémos ejecutar Arduino desde cualquier punto en nuestra computadora.
+
+Ahora, para compilar en arduino, debemos tener instalada la libreria pyserial, así que crearemos primero un entorno virtual especial para nuestras dependencias con arduino.
+
+Primero, como en mi caso tengo instalado conda, necesito un entonrno virtual que me permita compilar directamente mis archivos de tipo .ino a la placa de desarrollo ESP32, así que procedemos primero con la creación de un entorno virtual amigable con Arduino IDE
+
+$ conda create --name arduino python=3.9
+$ conda activate arduino
+
+Una vez, activado el entorno virtual especial para arduino, procedemos a instalar pyserial:
+
+pip install pyserial
+
+Finalmente, vamos a necesitar que Arduino IDE tenga los permisos necesarios para utilizar los puertos USB, así que corremos el siguiente comando
+
+sudo usermod -aG dialout $USER
+
+
+Una vez, ejecutado el comando, se debe reiniciar la computadora para que todos los cambios se apliquen. 
+
+:)
+
+Listo, campeon, ya tienes todo para que tus proyectos queden bien chingones, dale como los grandes. :)
+
